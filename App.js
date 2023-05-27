@@ -12,17 +12,17 @@ import axios from "axios";
 export default function App() {
   const [quote, setQuote] = useState();
 
-  useEffect(() => {
-    axios
-      .get("https://api.kanye.rest/")
-      .then((kanyeQuote) => setQuote(kanyeQuote.data));
-  }, []);
-
   const getNewQuote = () => {
     axios
       .get("https://api.kanye.rest/")
       .then((kanyeQuote) => setQuote(kanyeQuote.data));
   };
+
+  useEffect(() => {
+    getNewQuote()
+  }, []);
+
+  
 
   return (
     <ContainerApp>
