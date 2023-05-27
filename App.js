@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from "react";
+import {
+  ButtonRefresh,
+  ContainerApp,
+  KanyeImage,
+  Quote,
+  QuoteContainer,
+  TitleApp,
+} from "./styles";
+import axios from "axios";
 
 export default function App() {
+
+  const [quote, setQuote] = useState();
+
+  useEffect(() => {
+    axios
+      .get("https://api.kanye.rest/")
+      .then((kanyeQuote) => setQuote(kanyeQuote.data));
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ContainerApp>
+      <TitleApp> KANYE QUOTE OF THE DAY: </TitleApp>
+      <QuoteContainer>
+        <KanyeImage
+          source={{
+            uri: "https://wirdd.in/kanye/gifs/head.gif",
+          }}
+        />
+        {quote && <Quote>"{quote.quote}"</Quote>}
+        <ButtonRefresh
+          color="#a75f3b"
+          title="Refresh for a new Quote 🌊"
+        ></ButtonRefresh>
+      </QuoteContainer>
+    </ContainerApp>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
