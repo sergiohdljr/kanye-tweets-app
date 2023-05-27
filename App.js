@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import {
-  ButtonRefresh,
   ContainerApp,
   KanyeImage,
   Quote,
   QuoteContainer,
   TitleApp,
 } from "./styles";
+import { Button } from "react-native";
 import axios from "axios";
 
 export default function App() {
-
   const [quote, setQuote] = useState();
 
   useEffect(() => {
@@ -19,9 +18,15 @@ export default function App() {
       .then((kanyeQuote) => setQuote(kanyeQuote.data));
   }, []);
 
+  const getNewQuote = () => {
+    axios
+      .get("https://api.kanye.rest/")
+      .then((kanyeQuote) => setQuote(kanyeQuote.data));
+  };
+
   return (
     <ContainerApp>
-      <TitleApp> KANYE QUOTE OF THE DAY: </TitleApp>
+      <TitleApp>KANYE QUOTE OF THE DAY:</TitleApp>
       <QuoteContainer>
         <KanyeImage
           source={{
@@ -29,10 +34,11 @@ export default function App() {
           }}
         />
         {quote && <Quote>"{quote.quote}"</Quote>}
-        <ButtonRefresh
+        <Button
+          onPress={getNewQuote}
           color="#a75f3b"
           title="Refresh for a new Quote 🌊"
-        ></ButtonRefresh>
+        ></Button>
       </QuoteContainer>
     </ContainerApp>
   );
