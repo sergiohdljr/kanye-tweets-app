@@ -5,24 +5,20 @@ import {
   Quote,
   QuoteContainer,
   TitleApp,
-} from "./styles";
+} from "./src/styles/styles";
 import { Button } from "react-native";
 import axios from "axios";
+import { api } from "./src/service/axios.config";
 
 export default function App() {
+  const getNewQuote = () =>
+    api.get("/text").then((kanyeQuote) => setQuote(kanyeQuote.data));
+
   const [quote, setQuote] = useState();
-
-  const getNewQuote = () => {
-    axios
-      .get("https://api.kanye.rest/text")
-      .then((kanyeQuote) => setQuote(kanyeQuote.data));
-  };
-
-  useEffect(() => {
-    getNewQuote()
-  }, []);
-
   
+  useEffect(() => {
+    getNewQuote();
+  }, []);
 
   return (
     <ContainerApp>
