@@ -32,7 +32,3 @@ font-size: 1.3rem;
 font-weight: bold;
 text-align: center;
 `
-
-export const ButtonRefresh = styled.Button`
-background-color: blueviolet;
-`
