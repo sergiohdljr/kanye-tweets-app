@@ -14,7 +14,7 @@ export default function App() {
 
   const getNewQuote = () => {
     axios
-      .get("https://api.kanye.rest/")
+      .get("https://api.kanye.rest/text")
       .then((kanyeQuote) => setQuote(kanyeQuote.data));
   };
 
@@ -33,7 +33,7 @@ export default function App() {
             uri: "https://wirdd.in/kanye/gifs/head.gif",
           }}
         />
-        {quote && <Quote>"{quote.quote}"</Quote>}
+        {quote && <Quote>"{quote}"</Quote>}
         <Button
           onPress={getNewQuote}
           color="#a75f3b"
