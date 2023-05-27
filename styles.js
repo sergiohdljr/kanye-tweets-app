@@ -25,7 +25,7 @@ gap: 0.8rem;
 `
 export const KanyeImage = styled.Image`
 width:300px;
-height: 300px;
+height: 215px;
 `
 export const Quote = styled.Text`
 font-size: 1.3rem;
