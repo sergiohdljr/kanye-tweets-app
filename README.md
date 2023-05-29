@@ -15,10 +15,12 @@ Instale usando npm:
   npm install 
 ```
 Inicializando Localmente: 
+**obs**: Após a inicialização você pode ler o **qrcode pelo app Expo Go(caso Android) ou clicar em **W** no terminal para visualizar na web (http://localhost:19006/)**.
 
 ```bash
   npx expo start
 ```
+
     
 ## Demonstração
 
