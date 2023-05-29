@@ -33,7 +33,7 @@ export default function App() {
         <Button
           onPress={getNewQuote}
           color="#a75f3b"
-          title="Refresh for a new Quote 🌊"
+          title="Press here for a new Quote 🌊"
         ></Button>
       </QuoteContainer>
     </ContainerApp>
